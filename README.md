@@ -4,9 +4,11 @@ A small, breadboard-built guitar amplifier developed using an NTE451 JFET preamp
 
 ## V1 Status
 
-**Currently under development.**
+**Functional prototype.**
 
-V1 is intentionally simple and has one user control: an **A10K master volume**. The circuit has not yet been fully audio-tested because an electric guitar is not currently available.
+V1 has now been successfully tested with a guitar signal and produces amplified audio through the 8 Ω speaker. The circuit remains a breadboard prototype, but the core analog signal path is working.
+
+V1 has one user control: an **A10K master volume**.
 
 ## V1 Signal Path
 
@@ -58,7 +60,7 @@ The initial drain voltage was approximately **0.6 V**. After adjusting the sourc
 
 The adjustable resistance was then replaced with a **1 kΩ fixed source resistor**, producing a drain voltage of approximately **3.9 to 4.0 V**.
 
-These measurements are being used as the V1 bias point.
+These measurements were used to establish the V1 bias point.
 
 ## LM386 Measurements
 
@@ -70,19 +72,41 @@ Measured on the V1 circuit:
 | 5 | Output | ~5.3 V DC |
 | 6 | Supply | ~9.0 V DC |
 
-The approximately half-supply DC voltage at the LM386 output is expected for its biased output stage. Audio performance still requires proper input testing with a guitar source.
+The approximately half-supply DC voltage at the LM386 output is consistent with its biased output stage.
 
-## Current Limitations
+## First Successful Audio Test
 
-V1 is still under development. The circuit has not been confirmed as a working guitar amplifier with a real guitar signal yet because an electric guitar is not currently available for testing.
+After the electrical troubleshooting and bias checks, V1 successfully produced amplified guitar audio through the speaker.
 
-No claims of completed audio performance are made at this stage.
+The amplifier was tested as a real analog signal chain rather than only being verified by DC voltage measurements. This confirmed that the input, preamp, volume control, LM386 stage, output coupling, and speaker path were functioning together.
+
+The project is still considered a prototype. The 8 Ω / 0.5 W speaker is small, so high output levels can produce audible distortion. The master volume provides control over the signal level entering the LM386 stage.
+
+## Troubleshooting Journey
+
+V1 did not work immediately. The build required repeated electrical checks and isolation of individual sections.
+
+Key debugging steps included:
+
+1. Verifying the 9 V supply.
+2. Checking LM386 supply, ground, and output voltages.
+3. Testing the NTE451 stage independently.
+4. Measuring the NTE451 drain and source voltages.
+5. Using an adjustable resistance to find a useful operating point.
+6. Replacing the temporary adjustment with a 1 kΩ source resistor.
+7. Verifying capacitor values and polarity.
+8. Checking the guitar jack tip and sleeve connections.
+9. Adding and verifying the A10K master volume control.
+10. Testing the complete signal path with a guitar.
+
+The final successful test confirmed that the problem was not simply a power or speaker issue: the circuit was capable of passing and amplifying the guitar signal.
 
 ## Design Notes
 
 V1 deliberately avoids digital processing and extra controls. There is no ESP32, OLED, Bluetooth, Wi-Fi, digital effects, or EQ in this version.
 
-The goal of V1 is to understand the fundamentals of:
+The goal of V1 was to learn the fundamentals of:
+
 - JFET biasing
 - Analog signal amplification
 - LM386 amplifier circuits
@@ -94,7 +118,7 @@ The goal of V1 is to understand the fundamentals of:
 
 ## Future Development
 
-V2 is planned as a separate development stage. Possible future features include an ESP32-based digital section, display controls, EQ/effects, and a modular extension that keeps the basic V1 amplifier usable.
+V2 is planned as a separate development stage. Possible future features include an ESP32-based digital section, display controls, EQ/effects, and a modular extension that keeps the basic V1 amplifier usable on its own.
 
 Those features are intentionally **not part of V1**.
 
